@@ -13,6 +13,15 @@ void testApp::setup(){
 		shopCount[i].play();
 	}
 	
+	shopLocations[0] = ofPoint(ofGetWidth() - officeCount[0].width - SPACING ,SPACING);
+	shopLocations[1] = ofPoint(100,20);
+	shopLocations[2] = ofPoint(200,20);
+	shopLocations[3] = ofPoint(300,20);
+	officeLocations[0] = ofPoint(20,300);
+	officeLocations[1] = ofPoint(100,300);
+	officeLocations[2] = ofPoint(200,300);
+	officeLocations[3] = ofPoint(300,300);
+	
 }
 
 //--------------------------------------------------------------
@@ -31,9 +40,13 @@ void testApp::draw(){
 
 
 
-    fingerMovie.draw(20,20);
+	for (int i = 0; i < 4; i++) {
+		officeCount[i].draw(ofGetWidth() - ( (i+1) * ( officeCount[i].width ) ) - ( (i+1) *  SPACING ) , SPACING );
+		shopCount[i].draw(ofGetWidth() - ( (i+1) * (shopCount[i].width ) ) - ( (i+1) *  SPACING ) , officeCount[i].height + ( 2 * SPACING ) );
+	}	
+	
     ofSetHexColor(0x000000);
-    unsigned char * pixels = fingerMovie.getPixels();
+    /*unsigned char * pixels = fingerMovie.getPixels();
     // let's move through the "RGB" char array
     // using the red pixel to control the size of a circle.
     for (int i = 4; i < 320; i+=8){

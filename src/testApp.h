@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 
+#define SPACING 50
+
 class testApp : public ofBaseApp{
 
 public:
@@ -22,6 +24,10 @@ public:
 
 	ofVideoPlayer	officeCount[4];
 	ofVideoPlayer	shopCount[4];
+	
+	ofPoint	officeLocations[4];
+	ofPoint shopLocations[4];
+	
 	bool                frameByframe;
 	
 };
