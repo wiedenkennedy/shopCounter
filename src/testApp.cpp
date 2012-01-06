@@ -7,28 +7,25 @@ void testApp::setup(){
 	frameByframe = false;
 
 	for (int i = 0; i < 4; i++) {
-		officeCount[i].loadMovie("movies/fingers.mov");
-		shopCount[i].loadMovie("movies/fingers.mov");
-		officeCount[i].play();
-		shopCount[i].play();
+		officeNumeral[i].loadMovie("movies/fingers.mov");
+		shopNumeral[i].loadMovie("movies/fingers.mov");
+		officeNumeral[i].play();
+		shopNumeral[i].play();
 	}
-	
-	shopLocations[0] = ofPoint(ofGetWidth() - officeCount[0].width - SPACING ,SPACING);
-	shopLocations[1] = ofPoint(100,20);
-	shopLocations[2] = ofPoint(200,20);
-	shopLocations[3] = ofPoint(300,20);
-	officeLocations[0] = ofPoint(20,300);
-	officeLocations[1] = ofPoint(100,300);
-	officeLocations[2] = ofPoint(200,300);
-	officeLocations[3] = ofPoint(300,300);
+
 	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
+	
+	if (countChanged) {
+		
+	}
+	
 	for (int i = 0; i < 4; i++) {
-		officeCount[i].idleMovie();
-		shopCount[i].idleMovie();
+		officeNumeral[i].idleMovie();
+		shopNumeral[i].idleMovie();
 	}
 }
 
@@ -41,8 +38,8 @@ void testApp::draw(){
 
 
 	for (int i = 0; i < 4; i++) {
-		officeCount[i].draw(ofGetWidth() - ( (i+1) * ( officeCount[i].width ) ) - ( (i+1) *  SPACING ) , SPACING );
-		shopCount[i].draw(ofGetWidth() - ( (i+1) * (shopCount[i].width ) ) - ( (i+1) *  SPACING ) , officeCount[i].height + ( 2 * SPACING ) );
+		officeNumeral[i].draw(ofGetWidth() - ( (i+1) * ( officeNumeral[i].width ) ) - ( (i+1) *  SPACING ) , SPACING );
+		shopNumeral[i].draw(ofGetWidth() - ( (i+1) * (shopNumeral[i].width ) ) - ( (i+1) *  SPACING ) , officeNumeral[i].height + ( 2 * SPACING ) );
 	}	
 	
     ofSetHexColor(0x000000);
@@ -78,21 +75,30 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::keyPressed  (int key){
-    /*switch(key){
+    switch(key){
         case 'f':
             frameByframe=!frameByframe;
             //fingerMovie.setPaused(frameByframe);
-        break;
+			break;
         case OF_KEY_LEFT:
-            fingerMovie.previousFrame();
-        break;
+            //fingerMovie.previousFrame();
+			break;
         case OF_KEY_RIGHT:
-            fingerMovie.nextFrame();
-        break;
+            //fingerMovie.nextFrame();
+			break;
         case '0':
-            fingerMovie.firstFrame();
-        break;
-    }*/
+            //fingerMovie.firstFrame();
+			break;
+		case 'o':
+			officeCount++;
+			countChanged = true;
+			break;
+		case 's':
+			shopCount++;
+			countChanged = true;	
+			break;
+
+    }
 }
 
 //--------------------------------------------------------------

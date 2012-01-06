@@ -22,11 +22,13 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);		
 
-	ofVideoPlayer	officeCount[4];
-	ofVideoPlayer	shopCount[4];
+	ofVideoPlayer	officeNumeral[4];
+	ofVideoPlayer	shopNumeral[4];
 	
-	ofPoint	officeLocations[4];
-	ofPoint shopLocations[4];
+	int shopCount;
+	int officeCount;
+	
+	bool countChanged;
 	
 	bool                frameByframe;
 	
