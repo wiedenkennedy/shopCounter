@@ -3,6 +3,7 @@
 #include "ofMain.h"
 
 #define SPACING 50
+#define NUMERAL_FRAMES 10
 
 class testApp : public ofBaseApp{
 
@@ -24,6 +25,11 @@ public:
 
 	ofVideoPlayer	officeNumeral[4];
 	ofVideoPlayer	shopNumeral[4];
+	
+	int officeInts[4];
+	int shopInts[4];
+	
+	int numeralInPoints[10];
 	
 	int shopCount;
 	int officeCount;

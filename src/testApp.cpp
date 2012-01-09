@@ -3,27 +3,72 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 	ofBackground(0,0,0);
-
+	ofSetVerticalSync(true);
+	ofSetFrameRate(25);
+	
 	frameByframe = false;
-
+	
+	
 	for (int i = 0; i < 4; i++) {
-		officeNumeral[i].loadMovie("movies/fingers.mov");
-		shopNumeral[i].loadMovie("movies/fingers.mov");
+	
+		
+		officeInts[i] = 0;
+		shopInts[i] = 0;		
+		
+		officeNumeral[i].loadMovie("movies/numerals.mov");
+		shopNumeral[i].loadMovie("movies/numerals.mov");
+		
 		officeNumeral[i].play();
 		shopNumeral[i].play();
+		
+		officeNumeral[i].setPaused(true);		
+		shopNumeral[i].setPaused(true);
+		
+		officeNumeral[i].firstFrame();
+		shopNumeral[i].firstFrame();
+		//shopNumeral[i].setFrame(50);
 	}
-
-	
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
 	
+	// if the count has changed from last time
 	if (countChanged) {
+
+		cout << "officeCount: " << ofToString(officeCount) << "\n";
+		cout << "  shopCount: " << ofToString(shopCount) << "\n\n";
+
+		// For each digit in the count number, split into an array of ints
+		for (int i = 0; i < ofToString(officeCount).size(); i++) {
+			char cntStr = ofToString(officeCount)[i];
+			officeInts[(4 - ofToString(officeCount).size()) + i] = ofToInt(&cntStr);
+		}		
+		for (int i = 0; i < ofToString(shopCount).size(); i++) {
+			char cntStr = ofToString(shopCount)[i];
+			shopInts[(4 - ofToString(shopCount).size()) + i] = ofToInt(&cntStr);
+		}
 		
+		// Output the ints for debugging purposes
+		cout << "officeInts: [" << officeInts[0] << ", " << ofToString(officeInts[1]) << ", " << ofToString(officeInts[2]).c_str() << ", " << officeInts[3] << "] " << "\n";
+		//cout << "  shopInts: [" << shopInts[0] << ", " << ofToString(shopInts[1]) << ", " << ofToString(shopInts[2]).c_str() << ", " << shopInts[3] << "] " << "\n";
+		
+		countChanged = !countChanged;
 	}
 	
 	for (int i = 0; i < 4; i++) {
+		
+		cout << "i: " << ofToString(3) << " | destinationFrame: " << ofToString(officeInts[3] * NUMERAL_FRAMES) << "| frame: " << ofToString(officeNumeral[3].getCurrentFrame()) << "/ " << ofToString(1.0f * officeNumeral[3].getTotalNumFrames()) << "\n";
+		
+		if (1.0f * officeNumeral[i].getCurrentFrame() < 1.0f * officeInts[i] * NUMERAL_FRAMES) {
+			officeNumeral[i].nextFrame();
+		}
+		
+		if (shopNumeral[i].getCurrentFrame() < shopInts[i] * NUMERAL_FRAMES) {
+			shopNumeral[i].nextFrame();
+		}
+		
+
 		officeNumeral[i].idleMovie();
 		shopNumeral[i].idleMovie();
 	}
@@ -31,17 +76,13 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-
 	ofSetHexColor(0xFFFFFF);
 
-
-
-
 	for (int i = 0; i < 4; i++) {
-		officeNumeral[i].draw(ofGetWidth() - ( (i+1) * ( officeNumeral[i].width ) ) - ( (i+1) *  SPACING ) , SPACING );
-		shopNumeral[i].draw(ofGetWidth() - ( (i+1) * (shopNumeral[i].width ) ) - ( (i+1) *  SPACING ) , officeNumeral[i].height + ( 2 * SPACING ) );
+		officeNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * ( officeNumeral[i].width ) ) - ( ( 4 - (i)) *  SPACING ) , SPACING );
+		shopNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * (shopNumeral[i].width ) ) - ( ( 4- (i)) *  SPACING ) , officeNumeral[i].height + ( 2 * SPACING ) );
 	}	
-	
+
     ofSetHexColor(0x000000);
     /*unsigned char * pixels = fingerMovie.getPixels();
     // let's move through the "RGB" char array
@@ -89,7 +130,7 @@ void testApp::keyPressed  (int key){
         case '0':
             //fingerMovie.firstFrame();
 			break;
-		case 'o':
+		case 'w':
 			officeCount++;
 			countChanged = true;
 			break;
