@@ -325,7 +325,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>F9C229DF14BF3C14004B172D</string>
+										<string>F9C22A0A14BF46B7004B172D</string>
 										<key>history</key>
 										<array>
 											<string>F950CE9B14BB216D00774CBE</string>
@@ -336,7 +336,7 @@
 											<string>F9C229CC14BF3B79004B172D</string>
 											<string>F9C229DC14BF3C14004B172D</string>
 											<string>F9C229DD14BF3C14004B172D</string>
-											<string>F9C229DE14BF3C14004B172D</string>
+											<string>F9C229DF14BF3C14004B172D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -348,14 +348,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {2169, 872}}</string>
+								<string>{{0, 0}, {2169, 865}}</string>
 								<key>RubberWindowFrame</key>
 								<string>44 55 2516 1363 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>872pt</string>
+							<string>865pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -368,14 +368,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 877}, {2169, 445}}</string>
+								<string>{{0, 870}, {2169, 452}}</string>
 								<key>RubberWindowFrame</key>
 								<string>44 55 2516 1363 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>445pt</string>
+							<string>452pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -394,9 +394,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>F9C2294D14BEE6FB004B172D</string>
+				<string>F9C22A0B14BF46B7004B172D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>F9C2294E14BEE6FB004B172D</string>
+				<string>F9C22A0C14BF46B7004B172D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -534,12 +534,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>F9C229E014BF3C14004B172D</string>
-		<string>F9C2295D14BEE72E004B172D</string>
-		<string>F9C2295E14BEE72E004B172D</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>F922D59114B6FFF300147D4C</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/workspaces/app/openframeworks/007/apps/myApps/shopCounter/shopCounter.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -620,7 +615,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>F922D59114B6FFF300147D4C</string>
-				<string>F9C2294F14BEE6FB004B172D</string>
+				<string>F9C22A0D14BF46B7004B172D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

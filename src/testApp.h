@@ -38,5 +38,19 @@ public:
 	
 	bool                frameByframe;
 	
+	//Sound Effects player
+    
+    ofDirectory shopDir;
+    ofDirectory officeDir;
+    
+    vector<ofSoundPlayer> shopSounds;
+    vector<ofSoundPlayer> officeSounds;
+    
+    int totalShopSounds;
+    int totalOfficeSounds;
+	
+    void loadShopOfficeSounds();
+    void playShopOfficeSound(bool shop);
+	
 };
 
