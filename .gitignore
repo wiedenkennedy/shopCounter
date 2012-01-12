@@ -1,3 +1,8 @@
 build/*
 bin/*.app
 *.DS_Store
+/bin/data/movies/*
+shopCounter.xcodeproj
+Project.xcconfig
+/bin/data/officesfx/*
+/bin/data/shopsfx/*

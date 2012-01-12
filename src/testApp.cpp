@@ -8,7 +8,6 @@ void testApp::setup(){
 	
 	frameByframe = false;
 	
-	
 	for (int i = 0; i < 4; i++) {
 	
 		
@@ -26,13 +25,15 @@ void testApp::setup(){
 		
 		officeNumeral[i].firstFrame();
 		shopNumeral[i].firstFrame();
-		//shopNumeral[i].setFrame(50);
+		shopNumeral[i].setFrame(50);
 	}
+    
+    loadShopOfficeSounds();
 }
 
 //--------------------------------------------------------------
 void testApp::update(){
-	
+	/*
 	// if the count has changed from last time
 	if (countChanged) {
 
@@ -72,18 +73,20 @@ void testApp::update(){
 		officeNumeral[i].idleMovie();
 		shopNumeral[i].idleMovie();
 	}
+    */
 }
 
 //--------------------------------------------------------------
 void testApp::draw(){
-	ofSetHexColor(0xFFFFFF);
-
+	/*
+    ofSetHexColor(0xFFFFFF);
+    
 	for (int i = 0; i < 4; i++) {
 		officeNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * ( officeNumeral[i].width ) ) - ( ( 4 - (i)) *  SPACING ) , SPACING );
 		shopNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * (shopNumeral[i].width ) ) - ( ( 4- (i)) *  SPACING ) , officeNumeral[i].height + ( 2 * SPACING ) );
-	}	
-
+	}
     ofSetHexColor(0x000000);
+    */
     /*unsigned char * pixels = fingerMovie.getPixels();
     // let's move through the "RGB" char array
     // using the red pixel to control the size of a circle.
@@ -133,10 +136,12 @@ void testApp::keyPressed  (int key){
 		case 'w':
 			officeCount++;
 			countChanged = true;
+            playShopOfficeSound(false);
 			break;
 		case 's':
 			shopCount++;
-			countChanged = true;	
+			countChanged = true;
+            playShopOfficeSound(true);
 			break;
 
     }
@@ -194,4 +199,50 @@ void testApp::gotMessage(ofMessage msg){
 //--------------------------------------------------------------
 void testApp::dragEvent(ofDragInfo dragInfo){ 
 
+}
+
+
+void testApp::loadShopOfficeSounds(){
+   
+    shopDir.listDir("sounds/shopsfx/");
+    officeDir.listDir("sounds/officesfx/");
+    
+    shopDir.sort();
+    officeDir.sort();
+    
+    for (int i = 0; i < (int)shopDir.size(); i++){
+        //load shop sound fx
+
+        ofSoundPlayer shopSnd;
+        shopSnd.loadSound(shopDir.getPath(i));
+        shopSounds.push_back(shopSnd);
+        cout << "shop sound: " << i << ": " << shopDir.getPath(i) << "\n";
+    }
+    for (int i = 0; i < (int)officeDir.size(); i++){
+        //load shop sound fx
+        ofSoundPlayer officeSnd;
+        officeSnd.loadSound(officeDir.getPath(i));
+        officeSounds.push_back(officeSnd);
+        cout << "office sound " << i << ": " << officeDir.getPath(i) << "\n";
+    }
+    
+    totalShopSounds = shopDir.size();
+    totalOfficeSounds = officeDir.size();
+    
+}
+
+void testApp::playShopOfficeSound(bool shop){
+    
+    if (shop){
+        int ranShop = int(ofRandom(0, (shopDir.size() - 1)) );
+
+        shopSounds[ranShop].play();
+        cout << "playing shop sound :" << ranShop << "\n";
+        
+    } else { // office
+        int ranOffice = int(ofRandom(0, (officeDir.size() - 1)) );
+        officeSounds[ranOffice].play();
+        cout << "playing office sound :" << ranOffice << "\n";
+    }
+    
 }
