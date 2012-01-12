@@ -4,7 +4,7 @@
 void testApp::setup(){
 	ofBackground(0,0,0);
 	ofSetVerticalSync(true);
-	ofSetFrameRate(25);
+	ofSetFrameRate(60);
 	
 	frameByframe = false;
 	
@@ -58,16 +58,35 @@ void testApp::update(){
 	
 	for (int i = 0; i < 4; i++) {
 		
-		cout << "i: " << ofToString(3) << " | destinationFrame: " << ofToString(officeInts[3] * NUMERAL_FRAMES) << "| frame: " << ofToString(officeNumeral[3].getCurrentFrame()) << "/ " << ofToString(1.0f * officeNumeral[3].getTotalNumFrames()) << "\n";
+		cout << "i: " << ofToString(3) << " | destinationFrame: " << ofToString(officeInts[3] * NUMERAL_FRAMES) << "| frame: " << ofToString(officeNumeral[3].getCurrentFrame()) << " / " << ofToString(1.0f * officeNumeral[3].getTotalNumFrames()) << "\n";
 		
-		if (1.0f * officeNumeral[i].getCurrentFrame() < 1.0f * officeInts[i] * NUMERAL_FRAMES) {
-			officeNumeral[i].nextFrame();
+		if (officeInts[i] * NUMERAL_FRAMES == 0) {
+			if (officeNumeral[i].getCurrentFrame() == 0) {
+				officeNumeral[i].setPaused(true);
+			} else if (officeNumeral[i].getCurrentFrame() >= 99) {
+				officeNumeral[i].setFrame(0);
+			} else {
+				officeNumeral[i].setPaused(false);
+			}
+		} else if (officeNumeral[i].getCurrentFrame() == officeInts[i] * NUMERAL_FRAMES) {
+			officeNumeral[i].setPaused(true);
+		} else {
+			officeNumeral[i].setPaused(false);
 		}
-		
-		if (shopNumeral[i].getCurrentFrame() < shopInts[i] * NUMERAL_FRAMES) {
-			shopNumeral[i].nextFrame();
+
+		if (shopInts[i] * NUMERAL_FRAMES == 0) {
+			if (shopNumeral[i].getCurrentFrame() == 0) {
+				shopNumeral[i].setPaused(true);
+			} else if (shopNumeral[i].getCurrentFrame() >= 99) {
+				shopNumeral[i].setFrame(0);
+			} else {
+				shopNumeral[i].setPaused(false);
+			}			
+		} else if (shopNumeral[i].getCurrentFrame() == shopInts[i] * NUMERAL_FRAMES) {
+			shopNumeral[i].setPaused(true);
+		} else {
+			shopNumeral[i].setPaused(false);
 		}
-		
 
 		officeNumeral[i].idleMovie();
 		shopNumeral[i].idleMovie();
