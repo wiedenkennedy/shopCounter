@@ -100,8 +100,8 @@ void testApp::draw(){
 	ofSetHexColor(0xFFFFFF);
 
 	for (int i = 0; i < 4; i++) {
-		officeNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * ( officeNumeral[i].width ) ) - ( ( 4 - (i)) *  SPACING ) , SPACING );
-		shopNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * (shopNumeral[i].width ) ) - ( ( 4- (i)) *  SPACING ) , officeNumeral[i].height + ( 2 * SPACING ) );
+		officeNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * ( officeNumeral[i].width ) ) - ( ( 4 - (i)) *  SPACING ) , 0 );
+		shopNumeral[i].draw(ofGetWidth() - ( ( 4 - (i)) * (shopNumeral[i].width ) ) - ( ( 4- (i)) *  SPACING ) , officeNumeral[i].height );
 	}	
 
     ofSetHexColor(0x000000);

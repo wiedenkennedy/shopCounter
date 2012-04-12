@@ -2,7 +2,7 @@
 
 #include "ofMain.h"
 
-#define SPACING 50
+#define SPACING 0
 #define NUMERAL_FRAMES 10
 
 class testApp : public ofBaseApp{
